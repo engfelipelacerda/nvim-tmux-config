@@ -7,7 +7,6 @@ return {
 			"stylua",
 			"prettier",
 			"black",
-			"rustfmt",
 			"clang-format",
 			"google-java-format",
 			"php-cs-fixer",
@@ -17,6 +16,7 @@ return {
 			"taplo",
 			"clangd",
 			-- Linters
+			"eslint_d",
 			"luacheck",
 			"eslint_d",
 			"ruff",

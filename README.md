@@ -80,6 +80,8 @@ This project is primarily intended for:
 - Logical separation of concerns:
   - LSP
   - Formaters, Linters
+  - TMUX
+  - DAP
   - UI
   - Utilities
 - Easy adaptation to future Neovim releases
