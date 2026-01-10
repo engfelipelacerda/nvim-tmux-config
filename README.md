@@ -10,21 +10,22 @@ This project was created as a response to outdated and deprecated configurations
 
 ## 📌 Table of Contents
 
-- Author
-- Project Purpose
-- Target Audience
-- Philosophy and Guidelines
-- Operating System
-- Technologies Used
-- Dependencies
-- Project Structure
-- Installation
-- Core Features
-- Language Support
-- How to use
-- Maintenance and Updates
-- Contributing
-- License
+## 📌 Table of Contents
+
+- [Author](#author)
+- [Project Purpose](#project-purpose)
+- [Target Audience](#target-audience)
+- [Operating System](#operating-system)
+- [Technologies Used](#technologies-used)
+- [Dependencies](#dependencies)
+- [Project Structure](#project-structure)
+- [Installation](#installation)
+- [Core Features](#core-features)
+- [Language Support](#language-support)
+- [How to use](#how-to-use)
+- [Maintenance and Updates](#maintenance-and-updates)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
@@ -63,103 +64,193 @@ This repository aims to eliminate these issues by rebuilding the configuration u
 
 This project is primarily intended for:
 
-- **Intermediate Neovim users**
-- Developers already familiar with plugins, LSP, and modern workflows
-- Users who want to understand and maintain their Neovim configuration in Lua
+- **Intermediate Neovim users** who already have practical experience with custom configurations
+- Developers familiar with **plugins, LSP integration, and modern Neovim workflows**
+- Users who want to **understand, customize, and maintain** their Neovim setup using Lua
 
-> ⚠️ This project is not recommended for absolute beginners.
-
----
-
-## 🧠 Philosophy and Guidelines
-
-- Modular configuration
-- Use of actively maintained plugins
-- Avoidance of deprecated or legacy solutions
-- Clear and readable Lua configuration
-- Logical separation of concerns:
-  - LSP
-  - Formaters, Linters
-  - TMUX
-  - DAP
-  - UI
-  - Utilities
-- Easy adaptation to future Neovim releases
+> ⚠️ **Note:** This project is not recommended for absolute beginners, as it assumes prior knowledge of Neovim concepts and configuration practices.
 
 ---
 
-## 🖥️ Operating System
+## 💻 Operating System
 
-### Development Environment
+### Development Environment (Tested)
 
-- Linux
+This project was developed and tested on the following environment:
+
+- **Operating System:** Pop!\_OS 24.04 LTS (COSMIC desktop)
+- **Kernel:** Linux 6.17.9-76061709-generic
+- **Architecture:** x86_64
+- **Shell:** zsh
+- **Neovim:** Latest stable release
+- **Terminal:** Tilix
+
+> ⚠️ While the project is designed to be portable across Linux distributions, minor adjustments may be required depending on the operating system, desktop environment, or package manager used.
+
+---
 
 ### Supported Operating Systems
 
-- Linux ✅
-- macOS ⚠️ (not officially tested)
-- Windows (WSL) ⚠️
-- Native Windows ❌
+- **Linux** ✅ (fully supported)
+- **macOS** ⚠️ (not officially tested; expected to work with minor adjustments)
+- **Windows (WSL)** ⚠️ (supported, but with limited functionality in some areas)
+- **Native Windows** ❌ (not supported)
 
 ---
 
-## 🧰 Technologies Used
+## 🧰 Main Technologies Used
 
-- **Neovim**
-- **Lua**
-- **Lazy.nvim** – Plugin manager
-- **LSP**
-- **Mason.nvim** – External tool management
-- **nvim-lspconfig** – LSP configuration
-- **conform.nvim** – Code formatting
-- **nvim-treesitter** – Advanced syntax parsing
-- **Fuzzy Finder** (e.g., fzf-lua)
-- **Codeium** - IA assistant
-- TMUX
-- TPM(Tmux Plugin Manager)
+- **Neovim**  
+  Core text editor used as the primary development environment, providing extensibility, performance, and a modern editing experience.
+- **Lua**  
+  Main configuration and scripting language, used to define editor behavior, plugins, and custom logic.
+- **lazy.nvim**  
+  Plugin manager responsible for lazy-loading, dependency resolution, and performance optimization.
+- **Mason.nvim**  
+  Manages external development tools such as LSP servers, formatters, linters, and debuggers.
+- **nvim-lspconfig**  
+  Provides configuration presets and helpers for integrating Language Server Protocol (LSP) servers.
+- **conform.nvim**  
+  Handles automatic code formatting across multiple languages.
+- **nvim-treesitter**  
+  Enables advanced syntax parsing, highlighting, and code-aware features based on Tree-sitter.
+- **Fuzzy Finder** (e.g. **fzf-lua**)  
+  Offers fast and efficient fuzzy searching for files, buffers, symbols, and more.
+- **DAP (Debug Adapter Protocol)**  
+  Provides debugging capabilities by integrating language-specific debuggers into Neovim.
+- **nvim-dap**  
+  Core implementation of the Debug Adapter Protocol for Neovim, enabling breakpoints, stepping, and variable inspection.
+- **TMUX**  
+  Terminal multiplexer used to manage multiple sessions, windows, and panes efficiently.
+- **TPM (Tmux Plugin Manager)**  
+  Manages TMUX plugins and ensures consistent terminal workflow customization.
+- **Codeium (AI Assistant)**  
+  AI-powered code assistant integrated into Neovim, providing intelligent code completion, inline suggestions, and contextual assistance across multiple programming languages.  
+  It enhances developer productivity by offering real-time recommendations, reducing boilerplate, and assisting with code exploration and refactoring.
 
 ---
 
 ## 📦 Dependencies
 
-### Required Dependencies
+This project relies on a combination of system-level tools, language runtimes, and optional utilities to provide a complete and modern Neovim experience.
 
-- `Neovim >= 0.10.0` : Required for native Lua configuration, LSP, Treesitter, diagnostics, and modern plugin APIs.
-- `Git >= 2.30` : Required to clone and update plugins via Lazy.nvim and others.
-- `curl` or `wget`
-- `ripgrep`
-- `fd`
-- `Node.js >= 25.2.1`
-- `npm` or `pnpm`
-- `Python >= 3.10` : Required for Python-based tooling managed by Mason.
-- `pip >= 24.0`
-- `Go >= 1.20` : Required for Go tooling and language server support.
-- `Ruby >= 4.0.0`
-- `gcc >= 13.3.0`
-- `fzf >= 0.67.0`
-- `tmux >= 3.3`
-- `TPM` : git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-- `Nerd Font (any patched font)`
-  Some dependencies are managed automatically via **Lazy** and **Mason**, while others must be installed at the system level.
-- `Lazy git >= 0.58.0` : recommend checking the official repository for installation(https://github.com/jesseduffield/lazygit)
+Some dependencies are managed automatically via **lazy.nvim** and **mason.nvim**, while others must be installed at the system level.
 
 ---
 
-## 📁 Project Structure
+### 🧠 Core Requirements
+
+- **Neovim ≥ 0.10.0**  
+  Required for native Lua configuration, built-in LSP client, Treesitter integration, diagnostics, and modern plugin APIs.  
+  👉 https://github.com/neovim/neovim
+
+- **Git ≥ 2.30**  
+  Used to clone, update, and manage plugins (via lazy.nvim, TPM, etc.).  
+  👉 https://git-scm.com/
+
+---
+
+### 🔧 Essential System Utilities
+
+- **curl** / **wget**  
+  Used to download external tools, language servers, and installers.  
+  👉 https://curl.se / https://www.gnu.org/software/wget/
+
+- **ripgrep (rg)**  
+  High-performance search tool used by fuzzy finders and search plugins.  
+  👉 https://github.com/BurntSushi/ripgrep
+
+- **fd**  
+  Fast and user-friendly alternative to `find`, used by file pickers.  
+  👉 https://github.com/sharkdp/fd
+
+- **Fuzzy Finder & UI**
+  fzf ≥ 0.67.0.
+  Provides fast fuzzy searching for files, buffers, commands, and symbols.
+  👉 https://github.com/junegunn/fzf
+
+- Nerd Font (patched font)
+  Required for proper rendering of icons in the UI.
+  Recommended repository:
+  👉 https://github.com/ryanoasis/nerd-fonts
+
+---
+
+### 🛠 🌐 Language Runtimes, Build & Compilation Tools
+
+- **GCC / G++ (C/C++ toolchain)**  
+  Required to compile native extensions, Treesitter parsers, and some LSP/debug adapters.  
+  On most Linux distributions, this is provided by **build-essential**.
+
+- These runtimes are required for language servers, formatters, linters, and debuggers managed by Mason.
+
+- Node.js ≥ 20 (LTS recommended)
+  Required for many LSP servers (TypeScript, ESLint, JSON, HTML, etc.).
+  Package managers: npm, pnpm, or yarn.
+  👉 https://nodejs.org/
+
+- Python ≥ 3.10
+  Used for Python-based tooling, formatters, and debuggers.
+  👉 https://www.python.org/
+
+- pip ≥ 24.0
+  Python package manager required for installing Python tools.
+  👉 https://pip.pypa.io/
+
+- Go ≥ 1.20
+  Required for Go language server (gopls), debuggers, and related tooling.
+  👉 https://go.dev/
+
+- Ruby ≥ 3.0
+  Used by certain formatters and Ruby language tooling.
+  👉 https://www.ruby-lang.org/
+
+- Debug adapters are installed via Mason, but system debuggers may be required depending on the language:
+  - lldb (C / C++)
+  - gdb (C / C++)
+  - delve (Go)
+
+---
+
+## 🗂 Project Structure
 
 ```text
 .
-├── init.lua
-├── lua/
-│   ├── config/
-│   ├── plugins/
-│   └── utils/
-├── after/
-│   └── lsp/
-├── lazy-lock.json
-└── README.md
+├── nvim/
+│   ├── after/
+│   │   └── lsp/            # Post-LSP configurations and overrides
+│   ├── lua/
+│   │   ├── config/         # Core editor configuration (options, keymaps, autocmds)
+│   │   └── plugins/        # Plugin specifications and setup (Lazy.nvim)
+│   ├── init.lua            # Neovim entry point
+│
+├── tmux/
+│   ├── plugins/            # TMUX plugins managed by TPM
+│   ├── scripts/            # Custom TMUX helper scripts
+│   └── tmux.conf           # Main TMUX configuration file
+│
+├── INSTALL.md              # Full copy-paste installation guide
+└── README.md               # Project documentation
 
 ```
+
+---
+
+## ⚙️ Installation
+
+## ⚙️ Installation
+
+This project requires several system-level dependencies and a manual setup process.
+
+For a complete, step-by-step installation guide — including all required dependencies, system tools, Neovim and TMUX configuration, and optional components — please refer to the dedicated installation document:
+
+👉 **[INSTALL.md](./INSTALL.md)**
+
+The installation guide is designed to be **copied and pasted directly** into the terminal and was primarily tested on **Linux (Pop!\_OS 24.04 – COSMIC)**.
+
+> ⚠️ Other Linux distributions, macOS, or WSL may require minor adjustments.
+
+---
 
 ## 📄 License
 

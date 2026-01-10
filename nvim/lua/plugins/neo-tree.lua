@@ -6,13 +6,9 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"MunifTanjim/nui.nvim",
 	},
-	cmd = "Neotree",
-	keys = {
-		{ "<leader>e", "<cmd>Neotree toggle<CR>", desc = "Toggle Neo-tree" },
-	},
 	config = function()
 		require("neo-tree").setup({
-			close_if_last_window = true,
+			close_if_last_window = false,
 			popup_border_style = "rounded",
 			enable_git_status = true,
 			enable_diagnostics = true,
@@ -28,6 +24,31 @@ return {
 			window = {
 				position = "left",
 				width = 30,
+			},
+
+			default_component_configs = {
+				icon = {
+					folder_closed = "",
+					folder_open = "",
+					folder_empty = "󰜌",
+					folder_empty_open = "󰜌",
+					default = "󰈚",
+					use_filtered_colors = true,
+				},
+
+				git_status = {
+					symbols = {
+						added = "✚",
+						modified = "",
+						deleted = "✖",
+						renamed = "󰁕",
+						untracked = "",
+						ignored = "",
+						unstaged = "󰄱",
+						staged = "",
+						conflict = "",
+					},
+				},
 			},
 		})
 	end,

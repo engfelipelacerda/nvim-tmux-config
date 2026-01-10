@@ -30,3 +30,17 @@ vim.api.nvim_create_autocmd("FileType", {
 		pcall(vim.treesitter.start, args.buf)
 	end,
 })
+
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = function()
+		local argv = vim.fn.argv()
+		if #argv == 1 and vim.fn.isdirectory(argv[1]) == 1 then
+			-- fecha o buffer vazio
+			vim.cmd("enew")
+			vim.cmd("bwipeout 1")
+
+			-- abre o neo-tree focado no diretório
+			vim.cmd("Neotree filesystem reveal left")
+		end
+	end,
+})

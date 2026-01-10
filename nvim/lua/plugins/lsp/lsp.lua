@@ -6,6 +6,7 @@ return {
 		{ "folke/lazydev.nvim", opts = {} },
 	},
 	config = function()
+		require("config.lsp")
 		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		-- used to enable autocompletion (assign to every lsp server config)
