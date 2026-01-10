@@ -1,5 +1,6 @@
 local dap = require("dap")
 
+-- C, C++, Rust
 dap.adapters.codelldb = {
 	type = "server",
 	port = "${port}",
@@ -9,6 +10,7 @@ dap.adapters.codelldb = {
 	},
 }
 
+-- Go
 dap.adapters.go = {
 	type = "server",
 	port = "${port}",
@@ -16,10 +18,4 @@ dap.adapters.go = {
 		command = "dlv",
 		args = { "dap", "-l", "127.0.0.1:${port}" },
 	},
-}
-
-dap.adapters.python = {
-	type = "executable",
-	command = "python",
-	args = { "-m", "debugpy.adapter" },
 }

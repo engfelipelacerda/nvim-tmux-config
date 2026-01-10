@@ -62,21 +62,6 @@ dap.configurations.go = {
 	},
 }
 
--- ======================
--- Python
--- ======================
-dap.configurations.python = {
-	{
-		type = "python",
-		request = "launch",
-		name = "Debug file",
-		program = "${file}",
-		pythonPath = function()
-			return vim.fn.exepath("python3") or vim.fn.exepath("python") or "python"
-		end,
-	},
-}
-
 -- Configura simbolos e cores do DAP
 vim.fn.sign_define("DapBreakpoint", {
 	text = "●",

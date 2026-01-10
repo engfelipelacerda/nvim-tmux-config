@@ -13,7 +13,7 @@ return {
 			"svelte",
 			"pyright",
 			"gopls",
-			"rust-analyzer",
+			"rust_analyzer",
 			"clangd",
 			"jdtls",
 			"intelephense",
