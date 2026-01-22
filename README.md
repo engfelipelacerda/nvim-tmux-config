@@ -19,9 +19,6 @@ This project was created as a response to outdated and deprecated configurations
 - [Project Structure](#project-structure)
 - [Installation](#installation)
 - [How to Use](#how-to-use)
-- [Core Features](#core-features)
-- [Language Support](#language-support)
-- [How to use](#how-to-use)
 - [License](#license)
 
 ---
