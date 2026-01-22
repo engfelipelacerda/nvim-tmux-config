@@ -1,9 +1,10 @@
 return {
-	"hrsh7th/cmp-nvim-lsp",
+	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/lazydev.nvim", opts = {} },
+		{ "hrsh7th/cmp-nvim-lsp", opts = {} },
 	},
 	config = function()
 		require("config.lsp")
