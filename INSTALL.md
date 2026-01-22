@@ -81,68 +81,11 @@ To enable AI-powered code completion using **Codeium**:
    ```
 
 3. A browser window will open. Log in or create a Codeium account.
-4. After successful authentication, return to Neovim.
+4. Authenticate Codeium in Neovim following the instructions
+5. After successful authentication, return to Neovim.
 
 Once connected, Codeium will start providing AI code suggestions automatically.
 
 ---
 
 ✅ Installation is complete. Restart Neovim and tmux if needed to ensure all changes are applied.
-
-# 16) INSTALL TMUX PLUGINS
-
-###############################################################################
-
-# Enter Tmux:
-
-# Inside tmux and press:
-
-# <Ctrl>+a then I
-
-# To restart tmux configs press:
-
-# <Ctrl>+a then r
-
-# (This installs all tmux plugins via TPM)
-
-###############################################################################
-
-# 17) INSTALL NEOVIM PLUGINS & TOOLS
-
-###############################################################################
-
-# Go to nvim and the lazy program will install all plugins and dependencies automatically:
-
-# mason.nvim will manage LSPs, formatters, linters, and debuggers
-
-###############################################################################
-
-# 18) 🤖 AI Assistant (Codeium) Setup
-
-###############################################################################
-
-# This project includes optional AI-powered features provided by **Codeium**.
-
-# These features enhance code completion, inline suggestions, and contextual assistance, but are **not required** for the core functionality of the configuration.
-
-    ---
-
-### 1️⃣ Create a Codeium Account
-
-    1. Visit the official website:
-       👉 https://codeium.com
-
-    2. Create a free account using:
-       - GitHub
-       - Google
-       - Email
-
----
-
-### 2️⃣ Authenticate Codeium in Neovim following the instructions
-
-###############################################################################
-
-# DONE 🎉
-
-###############################################################################
