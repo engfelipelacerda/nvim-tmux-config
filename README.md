@@ -293,7 +293,7 @@ ensure_installed = {
   -- Formatters
   "prettier",
   "stylua",
-  -- add formatters for the new language herep
+  -- add formatters for the new language here
 
   -- Linters
   "eslint_d",
