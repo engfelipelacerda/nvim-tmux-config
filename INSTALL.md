@@ -1,210 +1,99 @@
-###############################################################################
+# Installation Guide
 
-# 1) SYSTEM UPDATE
+This guide describes the installation process and post-installation steps for the Neovim and tmux configuration.
 
-###############################################################################
-sudo apt update && sudo apt upgrade -y
+---
 
-###############################################################################
+## 1️⃣ Install Dependencies
 
-# 2) CORE SYSTEM DEPENDENCIES
+Before installing the configuration, make sure **all required dependencies** listed in the `README.md` are installed on your system.
 
-###############################################################################
+👉 Refer to the **Dependencies** section in `README.md` for the full list and official download links.
 
-# Build tools (GCC, G++, make, libstdc++)
+---
 
-sudo apt install -y build-essential
+## 2️⃣ Clone Configuration Files
 
-# Essential CLI utilities
+After installing all dependencies, clone this repository and copy the **nvim** and **tmux** folders into your local `.config` directory.
 
-sudo apt install -y \
- git \
- curl \
- wget \
- ripgrep \
- fd-find \
- unzip \
- ca-certificates
+```bash
+# Clone the repository
+git clone https://github.com/engfelipelacerda/nvim-tmux-config.git
 
-###############################################################################
+# Ensure .config directory exists
+mkdir -p ~/.config
 
-# 3) NEOVIM (>= 0.10)
+# Copy configurations
+cp -r nvim-tmux-config/nvim ~/.config/nvim
+cp -r nvim-tmux-config/tmux ~/.config/tmux
+```
 
-###############################################################################
+> This repository contains both configurations inside the `nvim/` and `tmux/` folders.
 
-# Recommended: official Neovim repository or AppImage
+---
 
-sudo apt install -y neovim
+## 3️⃣ Post-Installation Configuration
 
-# Verify
+After cloning the tmux configuration, you need to install the tmux plugins first.
 
-nvim --version
+1. Open tmux.
+2. Press:
 
-###############################################################################
+   ```text
+   Ctrl + a
+   ```
 
-# 4) NODE.JS (LTS recommended)
+3. Then press:
 
-###############################################################################
+   ```text
+   i
+   ```
 
-# Recommended via NodeSource
+This will install all tmux plugins using TPM.
 
-curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-sudo apt install -y nodejs
+After the installation finishes, reload the tmux configuration without restarting tmux:
 
-# Package managers
+1. Press:
 
-sudo npm install -g npm pnpm
+   ```text
+   Ctrl + a
+   ```
 
-# Verify
+2. Then press:
 
-node -v
-npm -v
-pnpm -v
+   ```text
+   r
+   ```
 
-###############################################################################
+This reloads the tmux configuration file and applies the changes immediately.
 
-# 5) PYTHON
+---
 
-###############################################################################
-sudo apt install -y python3 python3-pip python3-venv
+## 4️⃣ Connect Codeium (AI Autocompletion)
 
-# Upgrade pip
+To enable AI-powered code completion using **Codeium**:
 
-python3 -m pip install --upgrade pip
+1. Open Neovim.
+2. Run the Codeium authentication command (depending on your setup):
 
-# Verify
+   ```vim
+   :Codeium Auth
+   ```
 
-python3 --version
-pip --version
+3. A browser window will open. Log in or create a Codeium account.
+4. After successful authentication, return to Neovim.
 
-###############################################################################
+Once connected, Codeium will start providing AI code suggestions automatically.
 
-# 6) GO
+---
 
-###############################################################################
-sudo apt install -y golang
-
-# Verify
-
-go version
-
-###############################################################################
-
-# 7) RUBY
-
-###############################################################################
-sudo apt install -y ruby-full
-
-# Verify
-
-ruby --version
-
-###############################################################################
-
-# 8) DEBUGGING TOOLS (DAP BACKENDS)
-
-###############################################################################
-sudo apt install -y gdb lldb
-
-###############################################################################
-
-# 9) TMUX
-
-###############################################################################
-sudo apt install -y tmux
-
-# Verify
-
-tmux -V
-
-###############################################################################
-
-# 10) TMUX PLUGIN MANAGER (TPM)
-
-###############################################################################
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-###############################################################################
-
-# 11) FUZZY FINDER
-
-###############################################################################
-sudo apt install -y fzf
-
-# Verify
-
-fzf --version
-
-###############################################################################
-
-# 12) NERD FONT (Icons support)
-
-###############################################################################
-
-# Recommended repository: ryanoasis/nerd-fonts
-
-# Example: FiraCode Nerd Font
-
-mkdir -p ~/.local/share/fonts
-cd /tmp
-wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip
-unzip FiraCode.zip -d ~/.local/share/fonts
-fc-cache -fv
-
-###############################################################################
-
-# 13) CLONE THIS REPOSITORY
-
-###############################################################################
-
-# Clone anywhere (example: ~/Projects)
-
-mkdir -p ~/Projects
-cd ~/Projects
-git clone https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
-cd SEU_REPOSITORIO
-
-###############################################################################
-
-# 14) INSTALL NEOVIM CONFIG
-
-###############################################################################
-mkdir -p $HOME/.config
-
-# Copy
-
-cp -r nvim $HOME/.config/
-
-# OR (recommended) symlink
-
-# ln -s $(pwd)/nvim $HOME/.config/nvim
-
-###############################################################################
-
-# 15) INSTALL TMUX CONFIG
-
-###############################################################################
-cp -r tmux $HOME/.config/
-
-# OR symlink
-
-# ln -s $(pwd)/tmux $HOME/.config/tmux
-
-# Ensure tmux loads config
-
-ln -sf $HOME/.config/tmux/tmux.conf $HOME/.tmux.conf
-
-###############################################################################
+✅ Installation is complete. Restart Neovim and tmux if needed to ensure all changes are applied.
 
 # 16) INSTALL TMUX PLUGINS
 
 ###############################################################################
 
 # Enter Tmux:
-
-```sh
-tmux
-```
 
 # Inside tmux and press:
 
@@ -223,10 +112,6 @@ tmux
 ###############################################################################
 
 # Go to nvim and the lazy program will install all plugins and dependencies automatically:
-
-```sh
-nvim
-```
 
 # mason.nvim will manage LSPs, formatters, linters, and debuggers
 

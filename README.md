@@ -10,8 +10,6 @@ This project was created as a response to outdated and deprecated configurations
 
 ## 📌 Table of Contents
 
-## 📌 Table of Contents
-
 - [Author](#author)
 - [Project Purpose](#project-purpose)
 - [Target Audience](#target-audience)
@@ -20,6 +18,7 @@ This project was created as a response to outdated and deprecated configurations
 - [Dependencies](#dependencies)
 - [Project Structure](#project-structure)
 - [Installation](#installation)
+- [How to Use](#how-to-use)
 - [Core Features](#core-features)
 - [Language Support](#language-support)
 - [How to use](#how-to-use)
@@ -148,6 +147,10 @@ Some dependencies are managed automatically via **lazy.nvim** and **mason.nvim**
   Used to clone, update, and manage plugins (via lazy.nvim, TPM, etc.).  
   👉 https://git-scm.com/
 
+- **tmux ≥ 3.4**  
+  Terminal multiplexer used for session management, pane/window workflows, and tmux plugin integrations (TPM).  
+  👉 https://github.com/tmux/tmux
+
 ---
 
 ### 🔧 Essential System Utilities
@@ -206,9 +209,18 @@ Some dependencies are managed automatically via **lazy.nvim** and **mason.nvim**
   👉 https://www.ruby-lang.org/
 
 - Debug adapters are installed via Mason, but system debuggers may be required depending on the language:
-  - lldb (C / C++)
-  - gdb (C / C++)
-  - delve (Go)
+  - **lldb (C / C++)**  
+    LLVM debugger used by lldb-vscode and other C/C++ debug adapters.  
+    Usually provided by the `llvm` or `lldb` package on Linux.  
+    👉 https://lldb.llvm.org/
+
+  - **gdb (C / C++)**  
+    GNU Debugger, commonly used for C and C++ debugging.  
+    👉 https://www.gnu.org/software/gdb/
+
+  - **delve (Go)**  
+    Native Go debugger required for Go debugging (used by nvim-dap and gopls).  
+    👉 https://github.com/go-delve/delve
 
 ---
 
@@ -238,8 +250,6 @@ Some dependencies are managed automatically via **lazy.nvim** and **mason.nvim**
 
 ## ⚙️ Installation
 
-## ⚙️ Installation
-
 This project requires several system-level dependencies and a manual setup process.
 
 For a complete, step-by-step installation guide — including all required dependencies, system tools, Neovim and TMUX configuration, and optional components — please refer to the dedicated installation document:
@@ -252,7 +262,120 @@ The installation guide is designed to be **copied and pasted directly** into the
 
 ---
 
+## 🧠 How to Use – Language Configuration
+
+After installation, you must configure the programming languages you want to use.  
+**nvim-tmux** relies on **Treesitter**, **Mason**, and **LSP** to provide syntax highlighting, autocomplete, diagnostics, formatting, and linting.
+
+Adding a new language is done in **three main steps**.
+
+### 1️⃣ Add the language to Treesitter (better colors & syntax)
+
+To get better colors, indentation, and code structure, add the language to:
+
+in nvim-tmux/lua/plugins/treesitter.lua
+
+Inside the `ensure_installed` list, add the desired language:
+
+```lua
+require("nvim-treesitter").install({
+  "lua",
+  "python",
+  "javascript",
+  "typescript",
+  -- add your new language here
+})
+```
+
+Treesitter is responsible for: Advanced syntax highlighting, smart indentation, incremental selection, better code readability.
+
+### 2️⃣ Install linters, formatters, and tools (Mason Tool Installer)
+
+To automatically download linters, formatters, and other tools, edit:
+
+nvim-tmux/lua/plugins/lsp/mason-tool-installer-nvim.lua
+
+Add the required tools to the ensure_installed list:
+
+```lua
+ensure_installed = {
+  -- Formatters
+  "prettier",
+  "stylua",
+
+  -- Linters
+  "eslint_d",
+  "luacheck",
+  -- add tools for the new language here
+}
+```
+
+This step enables: Automatic code formatting, static code analysis, integration with conform.nvim and nvim-lint.
+
+### 3️⃣ Add the Language Server (LSP)
+
+To enable autocomplete, diagnostics, go-to-definition, and hover documentation, edit:
+
+nvim-tmux/lua/plugins/lsp/mason.lua
+
+Add the language server to the ensure_installed list:
+
+```lua
+ensure_installed = {
+  "lua_ls",
+  "pyright",
+  "ts_ls",
+  -- add the LSP server for the new language here
+}
+```
+
+The LSP provides:Intelligent autocomplete, real-time errors and warnings, code navigation (definitions, references), inline documentation.
+
+### 4️⃣ Formatting and Linting Setup
+
+To configure and identify formatters per language, edit the following file:
+nvim-tmux/lua/plugins/lsp/conform-nvim.lua
+
+```lua
+formatters_by_ft = {
+    lua = { "stylua" },
+	javascript = { "prettier" },
+	typescript = { "prettier" },
+    -- add here
+}
+```
+
+To configure and identify linters per language, edit the following file:
+nvim-tmux/lua/plugins/lsp/nvim-lint.lua
+
+```lua
+lint.linters_by_ft = {
+	javascript = { "eslint_d" },
+	typescript = { "eslint_d" },
+	javascriptreact = { "eslint_d" },
+    -- add here
+}
+```
+
+🔁 Apply changes
+
+After configuring a language:
+
+Save all files
+
+Restart Neovim
+
+Let Mason automatically install the required dependencies
+
+You can check the installation status with:
+
+:Mason
+
 ## 📄 License
 
-This project is licensed under the **MIT License**.  
+This project is licensed under the **MIT License**.
 See the `LICENSE` file for more information.
+
+```
+
+```
