@@ -90,31 +90,31 @@ This project was developed and tested on the following environment:
 
 ## Technologies Used
 
-- **Neovim**  
+- **Neovim**
   Core text editor used as the primary development environment, providing extensibility, performance, and a modern editing experience.
-- **Lua**  
+- **Lua**
   Main configuration and scripting language, used to define editor behavior, plugins, and custom logic.
-- **lazy.nvim**  
+- **lazy.nvim**
   Plugin manager responsible for lazy-loading, dependency resolution, and performance optimization.
-- **Mason.nvim**  
+- **Mason.nvim**
   Manages external development tools such as LSP servers, formatters, linters, and debuggers.
-- **nvim-lspconfig**  
+- **nvim-lspconfig**
   Provides configuration presets and helpers for integrating Language Server Protocol (LSP) servers.
-- **conform.nvim**  
+- **conform.nvim**
   Handles automatic code formatting across multiple languages.
-- **nvim-treesitter**  
+- **nvim-treesitter**
   Enables advanced syntax parsing, highlighting, and code-aware features based on Tree-sitter.
-- **Fuzzy Finder** (e.g. **fzf-lua**)  
+- **Fuzzy Finder** (e.g. **fzf-lua**)
   Offers fast and efficient fuzzy searching for files, buffers, symbols, and more.
-- **DAP (Debug Adapter Protocol)**  
+- **DAP (Debug Adapter Protocol)**
   Provides debugging capabilities by integrating language-specific debuggers into Neovim.
-- **nvim-dap**  
+- **nvim-dap**
   Core implementation of the Debug Adapter Protocol for Neovim, enabling breakpoints, stepping, and variable inspection.
-- **TMUX**  
+- **TMUX**
   Terminal multiplexer used to manage multiple sessions, windows, and panes efficiently.
-- **TPM (Tmux Plugin Manager)**  
+- **TPM (Tmux Plugin Manager)**
   Manages TMUX plugins and ensures consistent terminal workflow customization.
-- **Codeium (AI Assistant)**  
+- **Codeium (AI Assistant)**
   AI-powered code assistant integrated into Neovim, providing intelligent code completion, inline suggestions, and contextual assistance across multiple programming languages.  
   It enhances developer productivity by offering real-time recommendations, reducing boilerplate, and assisting with code exploration and refactoring.
 
@@ -293,11 +293,12 @@ ensure_installed = {
   -- Formatters
   "prettier",
   "stylua",
+  -- add formatters for the new language herep
 
   -- Linters
   "eslint_d",
   "luacheck",
-  -- add tools for the new language here
+  -- add linters for the new language here
 }
 ```
 
