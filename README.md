@@ -22,13 +22,11 @@ This project was created as a response to outdated and deprecated configurations
 - [Core Features](#core-features)
 - [Language Support](#language-support)
 - [How to use](#how-to-use)
-- [Maintenance and Updates](#maintenance-and-updates)
-- [Contributing](#contributing)
 - [License](#license)
 
 ---
 
-## 👤 Author
+## Author
 
 - **Name: Luis Felipe Pessoa Lacerda**
 - **Email: engluisfelipepessoa@gmail.com**
@@ -38,7 +36,7 @@ This project was created as a response to outdated and deprecated configurations
 
 ---
 
-## 🎯 Project Purpose
+## Project Purpose
 
 This project was created out of the need to design a modern, reliable, and future-proof Neovim configuration from scratch, fully aligned with the latest stable versions of Neovim and its ecosystem.
 
@@ -59,7 +57,7 @@ This repository aims to eliminate these issues by rebuilding the configuration u
 
 ---
 
-## 👥 Target Audience
+## Target Audience
 
 This project is primarily intended for:
 
@@ -71,7 +69,7 @@ This project is primarily intended for:
 
 ---
 
-## 💻 Operating System
+## Operating System
 
 ### Development Environment (Tested)
 
@@ -86,10 +84,6 @@ This project was developed and tested on the following environment:
 
 > ⚠️ While the project is designed to be portable across Linux distributions, minor adjustments may be required depending on the operating system, desktop environment, or package manager used.
 
----
-
-### Supported Operating Systems
-
 - **Linux** ✅ (fully supported)
 - **macOS** ⚠️ (not officially tested; expected to work with minor adjustments)
 - **Windows (WSL)** ⚠️ (supported, but with limited functionality in some areas)
@@ -97,7 +91,7 @@ This project was developed and tested on the following environment:
 
 ---
 
-## 🧰 Main Technologies Used
+## Technologies Used
 
 - **Neovim**  
   Core text editor used as the primary development environment, providing extensibility, performance, and a modern editing experience.
@@ -129,7 +123,7 @@ This project was developed and tested on the following environment:
 
 ---
 
-## 📦 Dependencies
+## Dependencies
 
 This project relies on a combination of system-level tools, language runtimes, and optional utilities to provide a complete and modern Neovim experience.
 
@@ -224,7 +218,7 @@ Some dependencies are managed automatically via **lazy.nvim** and **mason.nvim**
 
 ---
 
-## 🗂 Project Structure
+## Project Structure
 
 ```text
 .
@@ -248,7 +242,7 @@ Some dependencies are managed automatically via **lazy.nvim** and **mason.nvim**
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 This project requires several system-level dependencies and a manual setup process.
 
@@ -262,7 +256,7 @@ The installation guide is designed to be **copied and pasted directly** into the
 
 ---
 
-## 🧠 How to Use – Language Configuration
+## How to Use
 
 After installation, you must configure the programming languages you want to use.  
 **nvim-tmux** relies on **Treesitter**, **Mason**, and **LSP** to provide syntax highlighting, autocomplete, diagnostics, formatting, and linting.
@@ -371,11 +365,7 @@ You can check the installation status with:
 
 :Mason
 
-## 📄 License
+## License
 
 This project is licensed under the **MIT License**.
 See the `LICENSE` file for more information.
-
-```
-
-```
