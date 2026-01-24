@@ -33,6 +33,13 @@ vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position"
 -- Quick config editing
 vim.keymap.set("n", "<leader>rc", "<Cmd>e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
 
--- File Explorer
-vim.keymap.set("n", "<leader>m", "<Cmd>Neotree focus<CR>", { desc = "Focus Neo-tree" })
-vim.keymap.set("n", "<leader>e", "<Cmd>Neotree toggle<CR>", { desc = "Toggle Neo-tree" })
+-- Neo-tree/Buffer
+vim.keymap.set("n", "<leader>m", "<Cmd>Neotree toggle<CR>", { desc = "Toggle Neo-tree" })
+
+vim.keymap.set("n", "<leader>e", function()
+	if vim.bo.filetype == "neo-tree" then
+		vim.cmd("wincmd p")
+	else
+		vim.cmd("Neotree focus")
+	end
+end, { desc = "Focus Neo-tree / buffer" })

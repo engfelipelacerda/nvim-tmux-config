@@ -31,6 +31,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+-- Automatically open Neo-tree when starting Neovim.
 vim.api.nvim_create_autocmd("VimEnter", {
 	callback = function()
 		local argv = vim.fn.argv()
@@ -39,7 +40,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 			vim.cmd("enew")
 			vim.cmd("bwipeout 1")
 
-			-- abre o neo-tree focado no diretório
+			-- Opens the neo-tree focused on the directory.
 			vim.cmd("Neotree filesystem reveal left")
 		end
 	end,
