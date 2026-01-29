@@ -45,3 +45,12 @@ vim.api.nvim_create_autocmd("VimEnter", {
 		end
 	end,
 })
+
+-- Open PDF files using the system default PDF viewer
+vim.api.nvim_create_autocmd("BufReadCmd", {
+	pattern = "*.pdf",
+	callback = function()
+		local file = vim.fn.expand("<afile>")
+		vim.fn.jobstart({ "xdg-open", file }, { detach = true })
+	end,
+})
