@@ -15,10 +15,15 @@ Before installing the configuration, make sure **all required dependencies** lis
 ## 2️⃣ Clone Configuration Files
 
 After installing all dependencies, clone this repository and copy the **nvim** and **tmux** folders into your local `.config` directory.
+This repository uses **git submodules** (TPM for tmux plugin management).
+
+Clone the repository with submodules:
 
 ```bash
-# Clone the repository
-git clone https://github.com/engfelipelacerda/nvim-tmux-config.git
+git clone --recurse-submodules https://github.com/engfelipelacerda/nvim-tmux-config
+
+# If you already cloned without submodules, run:
+git submodule update --init --recursive
 
 # Ensure .config directory exists
 mkdir -p ~/.config
