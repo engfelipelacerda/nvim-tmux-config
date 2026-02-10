@@ -114,7 +114,7 @@ This project was developed and tested on the following environment:
   Terminal multiplexer used to manage multiple sessions, windows, and panes efficiently.
 - **TPM (Tmux Plugin Manager)**
   Manages TMUX plugins and ensures consistent terminal workflow customization.
-- **Copilot and Codeium(AI Assistant)**
+- **Codeium(AI Assistant)**
   AI-powered code assistant integrated into Neovim, providing intelligent code completion, inline suggestions, and contextual assistance across multiple programming languages.
   It enhances developer productivity by offering real-time recommendations, reducing boilerplate, and assisting with code exploration and refactoring.
 

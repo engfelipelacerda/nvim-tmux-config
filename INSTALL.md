@@ -74,18 +74,6 @@ This reloads the tmux configuration file and applies the changes immediately.
 
 ---
 
-## 🤖 Connect GitHub Copilot (AI Autocompletion)
-
-To enable AI-powered code completion using **GitHub Copilot**:
-
-1. Open Neovim.
-
-2. Run the Copilot authentication command:
-
-```vim
-:Copilot auth
-```
-
 ## 🤖 Connect Codeium (AI Autocompletion)
 
 To enable AI-powered code completion using **Windsurf Codeium**:
