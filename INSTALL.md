@@ -86,6 +86,18 @@ To enable AI-powered code completion using **GitHub Copilot**:
 :Copilot auth
 ```
 
+## 🤖 Connect Codeium (AI Autocompletion)
+
+To enable AI-powered code completion using **Windsurf Codeium**:
+
+1. Open Neovim.
+
+2. Run the Codeium authentication command:
+
+```vim
+:Codeium Auth
+```
+
 ---
 
 ✅ Installation is complete. Restart Neovim and tmux if needed to ensure all changes are applied.
