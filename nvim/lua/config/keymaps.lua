@@ -35,7 +35,6 @@ vim.keymap.set("n", "<leader>rc", "<Cmd>e ~/.config/nvim/init.lua<CR>", { desc =
 
 -- Neo-tree/Buffer
 vim.keymap.set("n", "<leader>m", "<Cmd>Neotree toggle<CR>", { desc = "Toggle Neo-tree" })
-
 vim.keymap.set("n", "<leader>e", function()
 	if vim.bo.filetype == "neo-tree" then
 		vim.cmd("wincmd p")

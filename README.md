@@ -114,8 +114,8 @@ This project was developed and tested on the following environment:
   Terminal multiplexer used to manage multiple sessions, windows, and panes efficiently.
 - **TPM (Tmux Plugin Manager)**
   Manages TMUX plugins and ensures consistent terminal workflow customization.
-- **Codeium (AI Assistant)**
-  AI-powered code assistant integrated into Neovim, providing intelligent code completion, inline suggestions, and contextual assistance across multiple programming languages.  
+- **Copilot (AI Assistant)**
+  AI-powered code assistant integrated into Neovim, providing intelligent code completion, inline suggestions, and contextual assistance across multiple programming languages.
   It enhances developer productivity by offering real-time recommendations, reducing boilerplate, and assisting with code exploration and refactoring.
 
 ---
@@ -130,23 +130,23 @@ Some dependencies are managed automatically via **lazy.nvim** and **mason.nvim**
 
 ### 🧠 Core Requirements
 
-- **Neovim ≥ 0.10.0**  
-  Required for native Lua configuration, built-in LSP client, Treesitter integration, diagnostics, and modern plugin APIs.  
+- **Neovim ≥ 0.10.0**
+  Required for native Lua configuration, built-in LSP client, Treesitter integration, diagnostics, and modern plugin APIs.
   👉 https://github.com/neovim/neovim
 
-- **Git ≥ 2.30**  
-  Used to clone, update, and manage plugins (via lazy.nvim, TPM, etc.).  
+- **Git ≥ 2.30**
+  Used to clone, update, and manage plugins (via lazy.nvim, TPM, etc.).
   👉 https://git-scm.com/
 
-- **tmux ≥ 3.4**  
-  Terminal multiplexer used for session management, pane/window workflows, and tmux plugin integrations (TPM).  
+- **tmux ≥ 3.4**
+  Terminal multiplexer used for session management, pane/window workflows, and tmux plugin integrations (TPM).
   👉 https://github.com/tmux/tmux
 
 ---
 
 ### 🔧 Essential System Utilities
 
-- **curl** / **wget**  
+- **curl** / **wget**
   Used to download external tools, language servers, and installers.  
   👉 https://curl.se / https://www.gnu.org/software/wget/
 
