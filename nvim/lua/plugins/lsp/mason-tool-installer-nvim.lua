@@ -26,6 +26,7 @@ return {
 			"shellcheck",
 			"sqlfluff",
 			"cpplint",
+			"htmlhint",
 		},
 		auto_update = false,
 		run_on_start = true,

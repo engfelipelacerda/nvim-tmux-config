@@ -20,6 +20,7 @@ return {
 			ruby = { "rubocop" },
 			sql = { "sqlfluff" },
 			toml = { "taplo" },
+			html = { "htmlhint" },
 		}
 
 		-- Rodar lint automaticamente

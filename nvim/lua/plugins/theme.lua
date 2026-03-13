@@ -11,7 +11,7 @@ return {
 
 			NeoSolarized.setup({
 				style = "dark", -- "dark" ou "light"
-				transparent = true,
+				transparent = false,
 				terminal_colors = true,
 				enable_italics = true,
 				styles = {
