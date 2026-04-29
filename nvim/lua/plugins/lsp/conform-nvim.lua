@@ -31,6 +31,7 @@ return {
 			dockerfile = { "prettier" },
 			sql = { "sql-formatter" },
 			toml = { "taplo" },
+			prisma = { "prettier" },
 		},
 	},
 }

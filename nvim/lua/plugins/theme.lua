@@ -1,29 +1,42 @@
 return {
 	{
-		"Tsuzat/NeoSolarized.nvim",
-		lazy = false,
+		"ellisonleao/gruvbox.nvim",
 		priority = 1000,
 		config = function()
-			local ok, NeoSolarized = pcall(require, "NeoSolarized")
-			if not ok then
-				return
-			end
+			-- escolha: "dark" ou "light"
+			vim.o.background = "dark"
 
-			NeoSolarized.setup({
-				style = "dark", -- "dark" ou "light"
-				transparent = false,
+			require("gruvbox").setup({
 				terminal_colors = true,
-				enable_italics = true,
-				styles = {
-					comments = { italic = true },
-					keywords = { italic = true },
-					functions = { bold = true },
-					string = { italic = true },
-					underline = true,
-					undercurl = true,
+				undercurl = true,
+				underline = true,
+				bold = true,
+
+				italic = {
+					strings = true,
+					emphasis = true,
+					comments = true,
+					operators = false,
+					folds = true,
 				},
+
+				strikethrough = true,
+
+				invert_selection = false,
+				invert_signs = false,
+				invert_tabline = false,
+				inverse = true,
+
+				contrast = "", -- "", "soft", "hard"
+
+				palette_overrides = {},
+				overrides = {},
+
+				dim_inactive = false,
+				transparent_mode = false,
 			})
-			vim.cmd("colorscheme NeoSolarized")
+
+			vim.cmd("colorscheme gruvbox")
 		end,
 	},
 }
