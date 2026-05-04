@@ -6,10 +6,12 @@ return {
 	},
 	opts = {
 		ensure_installed = {
-			-- DAPs
-			"codelldb", -- Rust
-			"debugpy", -- Python
-			"delve", -- Go
+			-- Debug adapters (DAPs)
+			-- Add here the debug adapters you actually use for your languages.
+			-- Example:
+			-- "codelldb",  -- C / C++ / Rust
+			-- "debugpy",   -- Python
+			-- "delve",     -- Go
 		},
 		automatic_installation = true,
 	},

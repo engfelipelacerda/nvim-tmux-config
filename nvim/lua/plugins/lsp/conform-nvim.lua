@@ -1,6 +1,6 @@
 return {
 	"stevearc/conform.nvim",
-	event = { "BufWritePre", "BufReadPre", "BufNewFile" },
+	event = { "BufWritePre" },
 	opts = {
 		format_on_save = {
 			timeout_ms = 2000,
@@ -19,19 +19,11 @@ return {
 			jsonc = { "prettier" },
 			yaml = { "prettier" },
 			markdown = { "prettier" },
-			python = { "black" },
-			go = { "gofmt" },
-			rust = { "rustfmt" },
 			c = { "clang-format" },
 			cpp = { "clang-format" },
-			php = { "php-cs-fixer" },
-			ruby = { "rubocop" },
 			sh = { "shfmt" },
 			bash = { "shfmt" },
 			dockerfile = { "prettier" },
-			sql = { "sql-formatter" },
-			toml = { "taplo" },
-			prisma = { "prettier" },
 		},
 	},
 }

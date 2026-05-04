@@ -6,27 +6,13 @@ return {
 			-- Formatters
 			"stylua",
 			"prettier",
-			"black",
 			"clang-format",
-			"google-java-format",
-			"php-cs-fixer",
-			"rubocop",
-			"shfmt",
-			"sql-formatter",
-			"taplo",
+
+			-- LSP
 			"clangd",
+
 			-- Linters
 			"eslint_d",
-			"luacheck",
-			"eslint_d",
-			"ruff",
-			"mypy",
-			"checkstyle",
-			"phpstan",
-			"shellcheck",
-			"sqlfluff",
-			"cpplint",
-			"htmlhint",
 		},
 		auto_update = false,
 		run_on_start = true,

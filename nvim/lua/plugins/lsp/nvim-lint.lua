@@ -9,17 +9,12 @@ return {
 			typescript = { "eslint_d" },
 			javascriptreact = { "eslint_d" },
 			typescriptreact = { "eslint_d" },
-			python = { "ruff", "mypy" },
 			lua = { "luacheck" },
 			sh = { "shellcheck" },
 			bash = { "shellcheck" },
 			c = { "cpplint" },
 			cpp = { "cpplint" },
 			java = { "checkstyle" },
-			php = { "phpstan        " },
-			ruby = { "rubocop" },
-			sql = { "sqlfluff" },
-			toml = { "taplo" },
 			html = { "htmlhint" },
 		}
 
