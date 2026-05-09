@@ -13,6 +13,11 @@ return {
 
 			-- Linters
 			"eslint_d",
+			"htmlhint",
+			"luacheck",
+			"shellcheck",
+			"cpplint",
+			"checkstyle",
 		},
 		auto_update = false,
 		run_on_start = true,
