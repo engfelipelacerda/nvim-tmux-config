@@ -53,7 +53,6 @@ return {
 					ellipsis_char = "...",
 					mode = "symbol_text",
 					menu = {
-						codeium = "",
 						luasnip = "",
 						buffer = "",
 						path = "",

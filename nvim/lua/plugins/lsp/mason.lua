@@ -3,6 +3,7 @@ return {
 	opts = {
 		-- List of servers for mason to install
 		ensure_installed = {
+			"bashls",
 			"lua_ls",
 			"ts_ls",
 			"html",

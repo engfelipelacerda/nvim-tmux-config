@@ -7,9 +7,7 @@ return {
 			"stylua",
 			"prettier",
 			"clang-format",
-
-			-- LSP
-			"clangd",
+			"shfmt",
 
 			-- Linters
 			"eslint_d",

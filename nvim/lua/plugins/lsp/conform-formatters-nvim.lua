@@ -22,6 +22,7 @@ return {
 			c = { "clang-format" },
 			cpp = { "clang-format" },
 			sh = { "shfmt" },
+			zsh = { "shfmt" },
 			bash = { "shfmt" },
 			dockerfile = { "prettier" },
 		},
