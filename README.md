@@ -120,53 +120,39 @@ This project was developed and tested on the following environment:
 
 ---
 
-## Dependencies
+## Required Dependencies
 
-This project relies on a combination of system-level tools, language runtimes, and optional utilities to provide a complete and modern Neovim experience.
+### Core
 
-Some dependencies are managed automatically via **lazy.nvim** and **mason.nvim**, while others must be installed at the system level.
+- Neovim >= 0.10
+- Git
+- tmux >= 3.4
 
----
+### System utilities
 
-### 🧠 Core Requirements
+- curl
+- ripgrep
+- fd
+- fzf
+- tree-sitter-cli
+- unzip
 
-- **Neovim ≥ 0.10.0**
-  Required for native Lua configuration, built-in LSP client, Treesitter integration, diagnostics, and modern plugin APIs.
-  👉 https://github.com/neovim/neovim
+### Build tools
 
-- **Git ≥ 2.30**
-  Used to clone, update, and manage plugins (via lazy.nvim, TPM, etc.).
-  👉 https://git-scm.com/
+- gcc
+- make
 
-- **tmux ≥ 3.4**
-  Terminal multiplexer used for session management, pane/window workflows, and tmux plugin integrations (TPM).
-  👉 https://github.com/tmux/tmux
+### Fonts
 
----
+- A Nerd Font (recommended: JetBrainsMono Nerd Font)
 
-### 🔧 Essential System Utilities
+### Language runtimes
 
-- **curl** / **wget**
-  Used to download external tools, language servers, and installers.  
-  👉 https://curl.se / https://www.gnu.org/software/wget/
+Install only the runtimes you need.
 
-- **ripgrep (rg)**  
-  High-performance search tool used by fuzzy finders and search plugins.  
-  👉 https://github.com/BurntSushi/ripgrep
+Common choices:
 
-- **fd**  
-  Fast and user-friendly alternative to `find`, used by file pickers.  
-  👉 https://github.com/sharkdp/fd
-
-- **Fuzzy Finder & UI**
-  fzf ≥ 0.67.0.
-  Provides fast fuzzy searching for files, buffers, commands, and symbols.
-  👉 https://github.com/junegunn/fzf
-
-- Nerd Font (patched font)
-  Required for proper rendering of icons in the UI.
-  Recommended repository:
-  👉 https://github.com/ryanoasis/nerd-fonts
+- Node.js (required by many LSPs and Mason packages)
 
 ---
 
@@ -176,42 +162,9 @@ Some dependencies are managed automatically via **lazy.nvim** and **mason.nvim**
   Required to compile native extensions, Treesitter parsers, and some LSP/debug adapters.  
   On most Linux distributions, this is provided by **build-essential**.
 
-- These runtimes are required for language servers, formatters, linters, and debuggers managed by Mason.
-
 - Node.js ≥ 20 (LTS recommended)
   Required for many LSP servers (TypeScript, ESLint, JSON, HTML, etc.).
   Package managers: npm, pnpm, or yarn.
-  👉 https://nodejs.org/
-
-- Python ≥ 3.10
-  Used for Python-based tooling, formatters, and debuggers.
-  👉 https://www.python.org/
-
-- pip ≥ 24.0
-  Python package manager required for installing Python tools.
-  👉 https://pip.pypa.io/
-
-- Go ≥ 1.20
-  Required for Go language server (gopls), debuggers, and related tooling.
-  👉 https://go.dev/
-
-- Ruby ≥ 3.0
-  Used by certain formatters and Ruby language tooling.
-  👉 https://www.ruby-lang.org/
-
-- Debug adapters are installed via Mason, but system debuggers may be required depending on the language:
-  - **lldb (C / C++)**  
-    LLVM debugger used by lldb-vscode and other C/C++ debug adapters.  
-    Usually provided by the `llvm` or `lldb` package on Linux.  
-    👉 https://lldb.llvm.org/
-
-  - **gdb (C / C++)**  
-    GNU Debugger, commonly used for C and C++ debugging.  
-    👉 https://www.gnu.org/software/gdb/
-
-  - **delve (Go)**  
-    Native Go debugger required for Go debugging (used by nvim-dap and gopls).  
-    👉 https://github.com/go-delve/delve
 
 ---
 

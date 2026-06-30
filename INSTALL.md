@@ -1,91 +1,160 @@
 # Installation Guide
 
-This guide describes the installation process and post-installation steps for the Neovim and tmux configuration.
+This guide describes the installation process for the Neovim and tmux configuration.
 
 ---
 
-## 1️⃣ Install Dependencies
+# 1. Install Required Dependencies
 
-Before installing the configuration, make sure **all required dependencies** listed in the `README.md` are installed on your system.
+Install the required system packages.
 
-👉 Refer to the **Dependencies** section in `README.md` for the full list and official download links.
-
----
-
-## 2️⃣ Clone Configuration Files
-
-After installing all dependencies, clone this repository and copy the **nvim** and **tmux** folders into your local `.config` directory.
-This repository uses **git submodules** (TPM for tmux plugin management).
-
-Clone the repository with submodules:
+### Arch Linux / CachyOS
 
 ```bash
-git clone --recurse-submodules https://github.com/engfelipelacerda/nvim-tmux-config
-
-# If you already cloned without submodules, run:
-git submodule update --init --recursive
-
-# Ensure .config directory exists
-mkdir -p ~/.config
-
-# Copy configurations
-cp -r nvim-tmux-config/nvim ~/.config/nvim
-cp -r nvim-tmux-config/tmux ~/.config/tmux
+sudo pacman -S \
+    neovim \
+    git \
+    tmux \
+    curl \
+    ripgrep \
+    fd \
+    fzf \
+    tree-sitter \
+    tree-sitter-cli \
+    gcc \
+    make \
+    unzip \
+    luarocks
 ```
 
-> This repository contains both configurations inside the `nvim/` and `tmux/` folders.
+> **Note**
+>
+> Node.js is required by many Mason packages (TypeScript, HTML, CSS, JSON, ESLint, Prettier, etc.).
+>
+> It is recommended to install Node.js using a version manager such as **asdf**.
 
 ---
 
-## 3️⃣ Post-Installation Configuration
+# 2. Clone the Repository
 
-After cloning the tmux configuration, you need to install the tmux plugins first.
+This repository contains Git submodules (TPM).
 
-1. Open tmux.
-2. Press:
+Clone it with:
 
-   ```text
-   Ctrl + a
-   ```
+```bash
+git clone --recurse-submodules https://github.com/engfelipelacerda/nvim-tmux-config.git
+```
 
-3. Then press:
+If you already cloned it without submodules:
 
-   ```text
-   i
-   ```
-
-This will install all tmux plugins using TPM.
-
-After the installation finishes, reload the tmux configuration without restarting tmux:
-
-1. Press:
-
-   ```text
-   Ctrl + a
-   ```
-
-2. Then press:
-
-   ```text
-   r
-   ```
-
-This reloads the tmux configuration file and applies the changes immediately.
+```bash
+cd nvim-tmux-config
+git submodule update --init --recursive
+```
 
 ---
 
-## 🤖 Connect Codeium (AI Autocompletion)
+# 3. Create Symbolic Links
 
-To enable AI-powered code completion using **Windsurf Codeium**:
+Instead of copying the configuration files, create symbolic links.
 
-1. Open Neovim.
+```bash
+mkdir -p ~/.config
 
-2. Run the Codeium authentication command:
+ln -sfn ~/Projetos/nvim-tmux-config/nvim ~/.config/nvim
+ln -sfn ~/Projetos/nvim-tmux-config/tmux/tmux.conf ~/.tmux.conf
+```
+
+Adjust the repository path if necessary.
+
+---
+
+# 4. Install tmux Plugins
+
+Open tmux:
+
+```bash
+tmux
+```
+
+Install TPM plugins:
+
+```
+Ctrl+a
+Shift+i
+```
+
+After installation, reload the configuration:
+
+```
+Ctrl+a
+r
+```
+
+---
+
+# 5. Open Neovim
+
+Start Neovim:
+
+```bash
+nvim
+```
+
+On the first launch, **lazy.nvim** will automatically install all plugins.
+
+Wait until the installation finishes before closing Neovim.
+
+---
+
+# 6. Verify Installation
+
+Run:
+
+```vim
+:checkhealth
+```
+
+Resolve any reported issues before continuing.
+
+If you see:
+
+```
+tree-sitter-cli not found
+```
+
+Install:
+
+```bash
+sudo pacman -S tree-sitter-cli
+```
+
+---
+
+# 7. Configure Mason
+
+Open Mason:
+
+```vim
+:Mason
+```
+
+Install the language servers, formatters, linters, and debuggers required for the languages you use.
+
+---
+
+# 8. Connect Codeium (Optional)
+
+To enable AI-powered code completion:
 
 ```vim
 :Codeium Auth
 ```
 
+Follow the authentication instructions.
+
 ---
 
-✅ Installation is complete. Restart Neovim and tmux if needed to ensure all changes are applied.
+Installation is complete.
+
+Restart tmux and Neovim if necessary.
