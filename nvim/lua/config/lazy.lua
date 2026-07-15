@@ -47,7 +47,7 @@ require("lazy").setup({
 	-- Optional: applies a temporary colorscheme during first install only.
 	install = {
 		colorscheme = {
-			"nightfox,",
+			"gruvbox",
 		},
 	},
 	checker = { enabled = true },

@@ -13,7 +13,6 @@ return {
 			"tailwindcss",
 			"clangd",
 			"jdtls",
-			"bashls",
 			"dockerls",
 			"yamlls",
 			"marksman",

@@ -31,13 +31,13 @@ sudo pacman -S \
 >
 > Node.js is required by many Mason packages (TypeScript, HTML, CSS, JSON, ESLint, Prettier, etc.).
 >
-> It is recommended to install Node.js using a version manager such as **asdf**.
+> It is recommended to install Node.js using a version manager such as **asdf** or **nvm**.
 
 ---
 
 # 2. Clone the Repository
 
-This repository contains Git submodules (TPM).
+This repository contains Git submodules (TPM and tmux plugins).
 
 Clone it with:
 
@@ -61,11 +61,10 @@ Instead of copying the configuration files, create symbolic links.
 ```bash
 mkdir -p ~/.config
 
-ln -sfn ~/Projetos/nvim-tmux-config/nvim ~/.config/nvim
-ln -sfn ~/Projetos/nvim-tmux-config/tmux/tmux.conf ~/.tmux.conf
+# Replace /path/to/nvim-tmux-config with where you actually cloned the repo
+ln -sfn /path/to/nvim-tmux-config/nvim ~/.config/nvim
+ln -sfn /path/to/nvim-tmux-config/tmux/tmux.conf ~/.tmux.conf
 ```
-
-Adjust the repository path if necessary.
 
 ---
 
@@ -141,17 +140,7 @@ Open Mason:
 
 Install the language servers, formatters, linters, and debuggers required for the languages you use.
 
----
-
-# 8. Connect Codeium (Optional)
-
-To enable AI-powered code completion:
-
-```vim
-:Codeium Auth
-```
-
-Follow the authentication instructions.
+See the [How to Use](./README.md#how-to-use) section of the README for the full step-by-step of adding a new language.
 
 ---
 
