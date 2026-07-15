@@ -24,6 +24,7 @@ sudo pacman -S \
     gcc \
     make \
     unzip \
+    lazygit \
     luarocks
 ```
 
