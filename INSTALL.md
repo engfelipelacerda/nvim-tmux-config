@@ -63,12 +63,27 @@ mkdir -p ~/.config
 
 # Replace /path/to/nvim-tmux-config with where you actually cloned the repo
 ln -sfn /path/to/nvim-tmux-config/nvim ~/.config/nvim
-ln -sfn /path/to/nvim-tmux-config/tmux/tmux.conf ~/.tmux.conf
+ln -sfn /path/to/nvim-tmux-config/tmux ~/.config/tmux
 ```
+
+> **Why the whole `tmux/` folder and not just `tmux.conf`?**
+> `tmux.conf` references its helper scripts using the fixed path `~/.config/tmux/scripts/...`. If you only symlink the `.conf` file, those scripts won't be found and the popup menu (`Ctrl+a w`) / scratch terminal (`Ctrl+t`) will fail. Since tmux >= 3.1 automatically looks for `~/.config/tmux/tmux.conf`, linking the whole folder as `~/.config/tmux` is all you need — there's no separate `~/.tmux.conf` symlink to create anymore.
 
 ---
 
-# 4. Install tmux Plugins
+# 4. Install TPM (Tmux Plugin Manager)
+
+`tmux.conf` bootstraps TPM from `~/.tmux/plugins/tpm` — a **different location** from the `tmux/plugins/` folder inside this repo. TPM has to be installed there directly:
+
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+> The `tmux/plugins/*` submodules bundled in this repo (tmux-sensible, vim-tmux-navigator, tmux-resurrect, tmux-continuum, tmux-yank, tmux-powerkit) are not actually loaded from there — once TPM is installed at `~/.tmux/plugins/tpm`, it downloads its own copies of every `@plugin` listed in `tmux.conf` straight from GitHub into `~/.tmux/plugins/`. The copies inside the repo exist only because of how the project was cloned (`--recurse-submodules`) and aren't required for the setup to work.
+
+---
+
+# 5. Install tmux Plugins
 
 Open tmux:
 
