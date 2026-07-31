@@ -48,6 +48,7 @@ return {
 			"typescript",
 			"tsx",
 			"yaml",
+			"python",
 		})
 	end,
 }

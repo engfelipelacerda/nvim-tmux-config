@@ -148,7 +148,9 @@ sudo pacman -S tree-sitter-cli
 
 # 7. Configure Mason
 
-Open Mason:
+Most tools are installed automatically: `mason-tool-installer.nvim` (formatters/linters) and `mason-nvim-dap.nvim` (debug adapters — `codelldb`, `debugpy`, `delve`, `java-debug-adapter`, `java-test`) both run on Neovim startup, so the first launch may take a couple of minutes while everything downloads in the background.
+
+Open Mason to check progress or install anything manually:
 
 ```vim
 :Mason
@@ -156,7 +158,14 @@ Open Mason:
 
 Install the language servers, formatters, linters, and debuggers required for the languages you use.
 
-See the [How to Use](./README.md#how-to-use) section of the README for the full step-by-step of adding a new language.
+> **Note — Java and Python debugging**
+>
+> The debug _adapters_ themselves are installed automatically by Mason, but they still need the actual language runtime present on your system:
+>
+> - **Java**: a **JDK 17+** must be available (used both by `jdtls` and by your project). Install it with your package manager or via `asdf` (see [README.md](./README.md#language-runtimes)).
+> - **Python**: a system **Python 3** installation is required to run your scripts; `debugpy` itself is bundled by Mason and needs no separate `pip install`.
+
+See the [How to Use](./README.md#how-to-use) section of the README for the full step-by-step of adding a new language — including how to wire up debugging (DAP) for it.
 
 ---
 

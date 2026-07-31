@@ -1,10 +1,10 @@
 return {
 	"stevearc/conform.nvim",
-	event = { "BufWritePre" },
+	event = { "BufReadPre", "BufNewFile" },
 	opts = {
 		format_on_save = {
 			timeout_ms = 2000,
-			lsp_fallback = true,
+			lsp_format = "fallback",
 		},
 		formatters_by_ft = {
 			lua = { "stylua" },
@@ -25,6 +25,7 @@ return {
 			zsh = { "shfmt" },
 			bash = { "shfmt" },
 			dockerfile = { "prettier" },
+			python = { "ruff_format" },
 		},
 	},
 }

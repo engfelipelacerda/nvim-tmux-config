@@ -114,6 +114,12 @@ This project is developed and tested on:
   Offers fast and efficient fuzzy searching for files, buffers, symbols, and more.
 - **nvim-dap** + **nvim-dap-ui**
   Debug Adapter Protocol implementation for Neovim, enabling breakpoints, stepping, and variable inspection, with a visual UI.
+- **mason-nvim-dap.nvim**
+  Bridges Mason and nvim-dap, automatically installing and wiring up debug adapters (`codelldb`, `debugpy`, etc.).
+- **nvim-dap-python**
+  Generates ready-to-use Python debug configurations (launch file, launch with arguments, attach remote) on top of `debugpy`.
+- **nvim-jdtls**
+  Eclipse JDT Language Server client for Java, also responsible for wiring the Java debugger (`java-debug-adapter` + `java-test` bundles) into nvim-dap.
 - **TMUX**
   Terminal multiplexer used to manage multiple sessions, windows, and panes efficiently.
 - **TPM (Tmux Plugin Manager)**
@@ -152,6 +158,11 @@ This project is developed and tested on:
 Install only the runtimes you need for the languages you work with. Common choice:
 
 - **Node.js >= 20 (LTS recommended)** — required by many LSP servers and Mason packages (TypeScript, ESLint, JSON, HTML, CSS, etc.). Use a version manager such as `asdf` or `nvm`.
+- **JDK 17+** — required by `jdtls` (the Java language server) to run itself, and by your own Java projects. Recommended via `asdf` (`asdf plugin add java` + `asdf install java temurin-21.0.4+7`).
+- **Maven and/or Gradle** — required to build/debug Java projects (`jdtls` looks for `pom.xml`, `gradlew`, or `.git` to detect the project root). Also installable via `asdf` (`asdf plugin add maven` / `asdf plugin add gradle`).
+- **Python 3** — required to actually run/debug Python code. `debugpy` (the Python debug adapter) is installed automatically by Mason and does **not** need a separate `pip install`.
+
+> Debug adapters themselves (`codelldb`, `debugpy`, `java-debug-adapter`, `java-test`) are installed automatically by Mason on first launch — they don't need to be installed manually, only the underlying language runtime (JDK, Python, etc.) does.
 
 ---
 
@@ -277,6 +288,23 @@ lint.linters_by_ft = {
 }
 ```
 
+### 5️⃣ Add debugging support (DAP)
+
+Debugging is not covered by the 4 steps above — it's a separate integration. There are always up to 3 pieces:
+
+1. **Adapter** — the "engine" that actually runs/stops the process (`codelldb`, `debugpy`, `delve`, ...). List it in `nvim/lua/plugins/dap/mason-nvim-dap.lua` → `ensure_installed`, so Mason installs it automatically:
+   ```lua
+   ensure_installed = {
+     "codelldb", -- C / C++
+     "debugpy", -- Python
+     -- add your new adapter here
+   }
+   ```
+2. **Configuration** — the "run profile" nvim-dap uses to launch a debug session. For most languages this is a `dap.configurations.<filetype>` table in `nvim/lua/config/dap.lua`. See the existing C/C++ entries there as a template — you'll also need a matching `dap.adapters.<name>` entry in `nvim/lua/config/dap-adapters.lua` if the adapter isn't already defined.
+3. **Language-specific plugin** (only when the adapter needs more glue than a generic launch config) — e.g. Python uses `nvim-dap-python` (`nvim/lua/plugins/dap/nvim-dap-python.lua`), which generates its own configs from `debugpy`. Java uses `nvim-jdtls`, which needs the `java-debug-adapter` and `java-test` Mason packages (listed in `mason-tool-installer-nvim.lua`) loaded as bundles in `nvim/ftplugin/java.lua`, since Java's debugger is embedded in the language server itself rather than being a standalone DAP adapter.
+
+Since `plugins/dap/` is auto-imported by lazy.nvim (see `nvim/lua/config/lazy.lua`), dropping a new file in that folder is enough for it to be picked up — no extra registration step needed.
+
 ### 🔁 Apply changes
 
 After configuring a language:
@@ -357,13 +385,15 @@ Check the installation status any time with:
 
 ### Neovim — Debug (DAP)
 
-| Key          | Action                       |
-| ------------ | ---------------------------- |
-| `<leader>tt` | Toggle breakpoint            |
-| `<leader>tc` | Start/continue debug session |
-| `<leader>tr` | Restart debug session        |
-| `<leader>td` | Disconnect debugger          |
-| `<leader>tq` | Terminate debug session      |
+| Key          | Action                                          |
+| ------------ | ----------------------------------------------- |
+| `<leader>tt` | Toggle breakpoint                               |
+| `<leader>tc` | Start/continue debug session                    |
+| `<leader>tr` | Restart debug session                           |
+| `<leader>td` | Disconnect debugger                             |
+| `<leader>tq` | Terminate debug session                         |
+| `<leader>tn` | Debug nearest test method _(Java buffers only)_ |
+| `<leader>tf` | Debug current test class _(Java buffers only)_  |
 
 ### Neovim — Help
 

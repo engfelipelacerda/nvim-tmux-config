@@ -16,6 +16,7 @@ return {
 			"dockerls",
 			"yamlls",
 			"marksman",
+			"pyright",
 		},
 	},
 	dependencies = {

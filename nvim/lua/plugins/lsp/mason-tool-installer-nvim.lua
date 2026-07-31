@@ -8,6 +8,7 @@ return {
 			"prettier",
 			"clang-format",
 			"shfmt",
+			"ruff",
 
 			-- Linters
 			"eslint_d",
@@ -16,6 +17,10 @@ return {
 			"shellcheck",
 			"cpplint",
 			"checkstyle",
+
+			-- Java DAP bundles (usados pelo jdtls para debug)
+			"java-debug-adapter",
+			"java-test",
 		},
 		auto_update = false,
 		run_on_start = true,

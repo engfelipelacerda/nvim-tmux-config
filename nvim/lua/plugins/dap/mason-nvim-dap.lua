@@ -8,10 +8,8 @@ return {
 		ensure_installed = {
 			-- Debug adapters (DAPs)
 			-- Add here the debug adapters you actually use for your languages.
-			-- Example:
-			-- "codelldb",  -- C / C++ / Rust
-			-- "debugpy",   -- Python
-			-- "delve",     -- Go
+			"codelldb", -- C / C++
+			"debugpy", -- Python
 		},
 		automatic_installation = true,
 	},

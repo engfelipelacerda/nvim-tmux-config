@@ -1,22 +1,6 @@
 local dap = require("dap")
 
 -- ======================
--- Rust
--- ======================
-dap.configurations.rust = {
-	{
-		name = "Debug executable",
-		type = "codelldb",
-		request = "launch",
-		program = function()
-			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
-		end,
-		cwd = "${workspaceFolder}",
-		stopOnEntry = false,
-	},
-}
-
--- ======================
 -- C
 -- ======================
 dap.configurations.c = {
@@ -36,31 +20,6 @@ dap.configurations.c = {
 -- C++
 -- ======================
 dap.configurations.cpp = dap.configurations.c
-
--- ======================
--- Go
--- ======================
-dap.configurations.go = {
-	{
-		type = "go",
-		name = "Debug file",
-		request = "launch",
-		program = "${file}",
-	},
-	{
-		type = "go",
-		name = "Debug package",
-		request = "launch",
-		program = "${fileDirname}",
-	},
-	{
-		type = "go",
-		name = "Debug test",
-		request = "launch",
-		mode = "test",
-		program = "${fileDirname}",
-	},
-}
 
 -- Configura simbolos e cores do DAP
 vim.fn.sign_define("DapBreakpoint", {

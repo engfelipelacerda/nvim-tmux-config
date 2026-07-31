@@ -17,6 +17,25 @@ local project_name = vim.fn.fnamemodify(root_dir or vim.uv.cwd(), ":t")
 -- This keeps project caches isolated and prevents data corruption between different codebases.
 local workspace_dir = vim.fn.stdpath("cache") .. "/jdtls/" .. project_name
 
+-- Localiza os .jar dos bundles de debug/test instalados pelo mason.
+-- Sem isso, o jdtls sobe normalmente (LSP funciona) mas o debug (DAP) fica indisponível.
+local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
+local bundles = {}
+
+vim.list_extend(
+	bundles,
+	vim.split(
+		vim.fn.glob(mason_packages .. "/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar"),
+		"\n"
+	)
+)
+vim.list_extend(bundles, vim.split(vim.fn.glob(mason_packages .. "/java-test/extension/server/*.jar"), "\n"))
+
+-- Remove entradas vazias que o glob pode retornar quando os pacotes ainda não foram instalados
+bundles = vim.tbl_filter(function(jar)
+	return jar ~= ""
+end, bundles)
+
 local config = {
 	-- Command options passed to launch the Eclipse JDT Language Server executable via Java
 	cmd = {
@@ -56,6 +75,28 @@ local config = {
 
 	-- Tell the LSP where the root boundaries of the project are
 	root_dir = root_dir,
+
+	-- Envia os bundles de debug/test para dentro do jdtls
+	init_options = {
+		bundles = bundles,
+	},
+
+	-- Assim que o jdtls conecta ao buffer, habilita o DAP e gera automaticamente
+	-- uma configuração de debug para cada classe com "main" encontrada no projeto.
+	on_attach = function(_, bufnr)
+		require("jdtls").setup_dap({ hotcodereplace = "auto" })
+		require("jdtls.dap").setup_dap_main_class_configs()
+
+		-- Keymaps específicos de Java (test runner do jdtls, via java-test)
+		local opts = { buffer = bufnr, desc = "Debug nearest Java test" }
+		vim.keymap.set("n", "<Leader>tn", require("jdtls").test_nearest_method, opts)
+		vim.keymap.set(
+			"n",
+			"<Leader>tf",
+			require("jdtls").test_class,
+			{ buffer = bufnr, desc = "Debug Java test class" }
+		)
+	end,
 }
 
 -- Start the JDTLS client or attach it to the current buffer if it's already running.

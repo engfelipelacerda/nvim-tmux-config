@@ -16,6 +16,7 @@ return {
 			cpp = { "cpplint" },
 			java = { "checkstyle" },
 			html = { "htmlhint" },
+			python = { "ruff" },
 		}
 
 		-- Rodar lint automaticamente
